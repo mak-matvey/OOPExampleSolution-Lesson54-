@@ -3,7 +3,7 @@
 #include <string>
 using namespace std;
 
-string getString();
+string toString();
 
 class Student
 {
@@ -14,15 +14,28 @@ public:
 	float mark;
 	bool alive;
 
-	string getString()
+	// constructors
+	Student()
+	{
+		cout << "default-construcor" << endl;
+
+		name = "undefined";
+		age = 13;
+		mark = 4.0;
+		alive = true;
+
+	}
+
+	// methods
+	string toString()
 	{
 		string s = "Name: ";
 
-		s += name + ", ";
-		s += "age: " + to_string(age) + ", ";
-		s += "average mark: " + to_string(mark) + ", ";
-		s += "is a student? ";
-		s += (alive ? "Yes\n" : "No\n");
+		s += name + "\n";
+		s += "Age: " + to_string(age) + "\n";
+		s += "Average mark: " + to_string(mark) + "\n";
+		s += "Is a student? ";
+		s += (alive ? "Yes" : "No");
 
 		return s;
 	}
