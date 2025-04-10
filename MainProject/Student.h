@@ -14,7 +14,7 @@ public:
 	float mark;
 	bool alive;
 
-	// constructor with args
+	// constructors with args
 	Student(string nm)
 	{
 		cout << "constructor with args" << endl;
@@ -64,6 +64,12 @@ public:
 		age = student.age;
 		mark = student.mark;
 		alive = student.alive;
+	}
+
+	// destructor
+	~Student()
+	{
+		cout << "destructor" << endl;
 	}
 
 	// methods
