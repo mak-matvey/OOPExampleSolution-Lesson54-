@@ -56,11 +56,21 @@ public:
 
 	}
 
+	// copy-constructor
+	Student(const Student& student)
+	{
+		cout << "copy-constructor" << endl;
+		name = student.name;
+		age = student.age;
+		mark = student.mark;
+		alive = student.alive;
+	}
+
 	// methods
 	string toString()
 	{
 		string s = "Name: ";
-
+			
 		s += name + "\n";
 		s += "Age: " + to_string(age) + "\n";
 		s += "Average mark: " + to_string(mark) + "\n";
