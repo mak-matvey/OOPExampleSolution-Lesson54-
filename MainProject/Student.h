@@ -14,7 +14,37 @@ public:
 	float mark;
 	bool alive;
 
-	// constructors
+	// constructor with args
+	Student(string nm)
+	{
+		cout << "constructor with args" << endl;
+		name = nm;
+		age = 13;
+		mark = 4.0;
+		alive = true;
+	}
+
+	Student(string nm, int a)
+	{
+		cout << "constructor with args" << endl;
+		name = nm;
+		age = a > 13 ? a : 13;
+		mark = 4.0;
+		alive = true;
+	}
+
+	// canonical-constructor
+	Student(string nm, int a, float mrk, bool alv)
+	{
+		cout << "canonical-constructor" << endl;
+		name = nm;
+		age = a > 13 ? a : 13;
+		mark = mrk > 4.0 ? mrk : 4.0;
+		alive = alv;
+	}
+
+
+	// constructor wihout args
 	Student()
 	{
 		cout << "default-construcor" << endl;
