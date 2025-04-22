@@ -1,18 +1,21 @@
 #pragma once
+
 #include <iostream>
 #include <string>
-using namespace std;
 
-string toString();
+using namespace std;
 
 class Student
 {
 public:
-
+	// fields
 	string name;
 	int age;
-	float mark;
+	int count_marks;
+	int* marks;
 	bool alive;
+
+	// constructors
 
 	// constructors with args
 	Student(string nm)
@@ -20,7 +23,7 @@ public:
 		cout << "constructor with args" << endl;
 		name = nm;
 		age = 13;
-		mark = 4.0;
+		marks = nullptr;
 		alive = true;
 	}
 
@@ -29,40 +32,51 @@ public:
 		cout << "constructor with args" << endl;
 		name = nm;
 		age = a > 13 ? a : 13;
-		mark = 4.0;
+		marks = nullptr;
 		alive = true;
 	}
 
 	// canonical-constructor
-	Student(string nm, int a, float mrk, bool alv)
+	Student(string nm, int a, int count, bool alv)
 	{
 		cout << "canonical-constructor" << endl;
 		name = nm;
 		age = a > 13 ? a : 13;
-		mark = mrk > 4.0 ? mrk : 4.0;
+		count_marks = count;
+		marks = new int[count_marks];
+
+		for (int i = 0; i < count_marks; i++)
+		{
+			marks[i] = 4;
+		}
+
 		alive = alv;
 	}
 
-
-	// constructor wihout args
+	// constructor without args
 	Student()
 	{
-		cout << "default-construcor" << endl;
+		cout << "default-constructor" << endl;
 
 		name = "undefined";
 		age = 13;
-		mark = 4.0;
+		marks = nullptr;
 		alive = true;
-
 	}
 
 	// copy-constructor
 	Student(const Student& student)
 	{
-		cout << "copy-constructor" << endl;
+		cout << "copy-constructor \n\n";
 		name = student.name;
 		age = student.age;
-		mark = student.mark;
+		count_marks = student.count_marks;
+		marks = new int[count_marks];
+
+		for (int i = 0; i < count_marks; i++)  // Fixed: initialized i and added condition
+		{
+			marks[i] = student.marks[i];
+		}
 		alive = student.alive;
 	}
 
@@ -70,19 +84,65 @@ public:
 	~Student()
 	{
 		cout << "destructor" << endl;
+
+		if (marks != nullptr)
+		{
+			delete[] marks;
+		}
 	}
 
 	// methods
 	string toString()
 	{
 		string s = "Name: ";
-			
+
 		s += name + "\n";
 		s += "Age: " + to_string(age) + "\n";
-		s += "Average mark: " + to_string(mark) + "\n";
+		s += "Marks: ";
+		s += convert() + "\n";
 		s += "Is a student? ";
 		s += (alive ? "Yes" : "No");
 
 		return s;
+	}
+
+	string convert()
+	{
+		if (marks == nullptr)
+		{
+			return "none";
+		}
+
+		string s = "[ ";
+
+		for (int i = 0; i < count_marks - 1; i++)
+		{
+			s += to_string(marks[i]) + ", ";
+		}
+
+		s += to_string(marks[count_marks - 1]) + " ]";
+
+		return s;
+	}
+
+	int get_mark(int index)
+	{
+		if (count_marks == 0 || index < 0 || index >= count_marks)
+		{
+			return 0;
+		}
+
+		return marks[index];
+	}
+
+	void set_marks(int index, int mark)
+	{
+		if (count_marks == 0 || index < 0 || index >= count_marks
+			|| mark < 0 || mark > 10)
+		{
+			return;
+		}
+
+		marks[index] = mark;
 	}
 };
