@@ -18,22 +18,14 @@ public:
 	// constructors
 
 	// constructors with args
-	Student(string nm)
+	Student(string name) : Student(name, 13)
 	{
 		cout << "constructor with args" << endl;
-		name = nm;
-		age = 13;
-		marks = nullptr;
-		alive = true;
 	}
 
-	Student(string nm, int a)
+	Student(string name, int a) : Student(name, age, NULL, true)
 	{
 		cout << "constructor with args" << endl;
-		name = nm;
-		age = a > 13 ? a : 13;
-		marks = nullptr;
-		alive = true;
 	}
 
 	// canonical-constructor
@@ -108,7 +100,7 @@ public:
 
 	string convert()
 	{
-		if (marks == nullptr)
+		if (count_marks == 0)
 		{
 			return "none";
 		}
