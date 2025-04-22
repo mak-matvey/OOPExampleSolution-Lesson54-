@@ -37,12 +37,12 @@ public:
 	}
 
 	// canonical-constructor
-	Student(string nm, int a, int count, bool alv)
+	Student(string name, int age, int count_marks, bool alive)
 	{
 		cout << "canonical-constructor" << endl;
-		name = nm;
-		age = a > 13 ? a : 13;
-		count_marks = count;
+		this->name = name;
+		this->age = age > 13 ? age : 13;
+		this->count_marks = count_marks;
 		marks = new int[count_marks];
 
 		for (int i = 0; i < count_marks; i++)
@@ -50,7 +50,7 @@ public:
 			marks[i] = 4;
 		}
 
-		alive = alv;
+		this->alive = alive;
 	}
 
 	// constructor without args
