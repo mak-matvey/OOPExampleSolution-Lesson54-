@@ -23,19 +23,19 @@ public:
 		cout << "constructor with args" << endl;
 	}
 
-	Student(string name, int a) : Student(name, age, NULL, true)
+	Student(string name, int age) : Student(name, age, 10, true) // Добавил значение по умолчанию для count_marks
 	{
-		cout << "constructor with args" << endl;
+		//cout << "constructor with args" << endl;
 	}
 
 	// canonical-constructor
-	Student(string name, int age, int count_marks, bool alive)
+	Student(string name, int age, int countMarks, bool alive)
 	{
-		cout << "canonical-constructor" << endl;
+		//cout << "canonical-constructor" << endl;
 		this->name = name;
 		this->age = age > 13 ? age : 13;
-		this->count_marks = count_marks;
-		marks = new int[count_marks];
+		this->count_marks = countMarks; // Исправлено: countMarks вместо count_marks
+		marks = new int[count_marks]; // Теперь count_marks инициализирована
 
 		for (int i = 0; i < count_marks; i++)
 		{
@@ -46,14 +46,9 @@ public:
 	}
 
 	// constructor without args
-	Student()
+	Student() : Student("undefined", 13, 10, true)
 	{
-		cout << "default-constructor" << endl;
-
-		name = "undefined";
-		age = 13;
-		marks = nullptr;
-		alive = true;
+		//cout << "default-constructor" << endl;
 	}
 
 	// copy-constructor
@@ -75,7 +70,7 @@ public:
 	// destructor
 	~Student()
 	{
-		cout << "destructor" << endl;
+		//cout << "destructor" << endl;
 
 		if (marks != nullptr)
 		{

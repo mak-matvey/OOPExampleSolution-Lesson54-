@@ -1,10 +1,20 @@
-#include "Student.h"
+#include "Initializer.h"
 
 int main()
 {
-	Student student1("Alex");
+	Student a;
+	Student* list = nullptr;
+	Initializer initializer;
 
-	cout << "Student 1:\n" << student1.toString() << "\n\n";
+	int count;
 
-	return 0;
+	cout << "Input number of students: ";
+	cin >> count;
+
+	initializer.init(list, count);
+
+	for (int i = 0; i < count; i++)
+	{
+		cout << list[i].toString() << endl;
+	}
 }
