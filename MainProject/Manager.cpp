@@ -1,0 +1,55 @@
+#include "Manager.h"
+
+Student* Manager::findBestStudents(Student* list, int count, int* bestCount)
+{
+	float bestMark = 8.5;
+	int count = 0;
+
+	*bestCount = 0;
+
+	for (int i = 0; i < count; i++)
+	{
+		if (list[i].getAverageMark() >= bestMark)
+		{
+			bestCount++;
+		}
+	}
+
+	Student* bestList = new Student[*bestCount];
+
+	for (int i = 0, j = 0; i < count; i++)
+	{
+		if (list[i].getAverageMark() >= bestMark)
+		{
+			bestList[j] = list[i];
+			j++;
+		}
+	}
+}
+
+Student* Manager::findWorstStudents(Student* list, int count, int* worstCount)
+{
+	float worstMark = 6.0;
+	int count = 0;
+
+	*worstCount = 0;
+
+	for (int i = 0; i < count; i++)
+	{
+		if (list[i].getAverageMark() >= worstMark)
+		{
+			worstCount++;
+		}
+	}
+
+	Student* worstList = new Student[*worstCount];
+
+	for (int i = 0, j = 0; i < count; i++)
+	{
+		if (list[i].getAverageMark() >= worstMark)
+		{
+			worstList[j] = list[i];
+			j++;
+		}
+	}
+}

@@ -21,7 +21,6 @@ using namespace std;
 		return s;
 	}
 
-
 	string Student::getName()
 	{
 		return name;

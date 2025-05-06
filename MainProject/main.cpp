@@ -1,4 +1,4 @@
-#include "Initializer.h"
+#include "Manager.h"
 
 int main()
 {
@@ -15,8 +15,14 @@ int main()
 
 	initializer.init(list, count);
 
+	cout << "All students: " << endl;
+
 	for (int i = 0; i < count; i++)
 	{
 		cout << list[i].toString() << endl;
 	}
+
+	Student* bestList = manager.findBestStudents(list, count, size);
+
+	cout << "List of best students: " << endl;
 }
