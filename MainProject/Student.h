@@ -35,164 +35,34 @@ private:
 	}
 
 public:
-
-	// methods get and set
-
-	string getName()
-	{
-		return name;
-	}
-
-	void setName(string name)
-	{
-		this->name = name;
-	}
-
-	int getAge()
-	{
-		return age;
-	}
-
-	void setAge(int age)
-	{
-		if (age > 18 || age < 13)
-		{
-			return;
-		}
-
-		this->age = age;
-	}
-
-	int* getMarks()
-	{
-		return marks;
-	}
-
-	void setMarks(int* marks, int countMarks)
-	{
-		if (countMarks <= 0 )
-		{
-			return;
-		}
-
-		this->marks = marks;
-		this->countMarks = countMarks;
-	}
-
-	int getCountMarks()
-	{
-		return countMarks;
-	}
-
-	bool isAlive()
-	{
-		return alive;
-	}
-
-	bool setAlive(bool alive)
-	{
-		this->alive = alive;
-	}
-
-	float getAverageMark()
-	{
-		int sum = 0;
-
-		for (int i = 0; i < countMarks; i++)
-		{
-			sum += marks[i];
-		}
-
-		return sum / countMarks;
-	}
-
 	// constructors
-
 	Student(string name) : Student(name, 13)
 	{
 	}
-
 	Student(string name, int age) : Student(name, age, 10, true)
 	{
 	}
-
-	Student(string name, int age, int countMarks, bool alive)
-	{
-		this->name = name;
-		this->age = age > 13 ? age : 13;
-		this->countMarks = countMarks;
-		marks = new int[countMarks];
-
-		for (int i = 0; i < countMarks; i++)
-		{
-			marks[i] = 4;
-		}
-
-		this->alive = alive;
-	}
-
-	Student() : Student("undefined", 13, 10, true)
-	{
-		//cout << "default-constructor" << endl;
-	}
-
-	Student(const Student& student)
-	{
-		cout << "copy-constructor \n\n";
-		name = student.name;
-		age = student.age;
-		countMarks = student.countMarks;
-		marks = new int[countMarks];
-
-		for (int i = 0; i < countMarks; i++)
-		{
-			marks[i] = student.marks[i];
-		}
-		alive = student.alive;
-	}
-
+	Student(string name, int age, int countMarks, bool alive);
+	Student();
+	Student(const Student& student);
+	
 	// destructor
-	~Student()
-	{
-		if (marks != nullptr)
-		{
-			delete[] marks;
-		}
-	}
+	~Student();
+
+	// methods get and set
+	string getName();
+	void setName(string name);
+	int getAge();
+	void setAge(int age);
+	int* getMarks();
+	void setMarks(int* marks, int countMarks);
+	int getCountMarks();
+	bool isAlive();
+	bool setAlive(bool alive);
+	float getAverageMark();
 
 	// methods
-	string toString()
-	{
-		string s = "Name: ";
-
-		s += name + "\n";
-		s += "Age: " + to_string(age) + "\n";
-		s += "Marks: ";
-		s += convert() + "\n";
-		s += "Is a student? ";
-		s += (alive ? "Yes\n" : "No\n");
-
-		return s;
-	}
-
-	int get_mark(int index)
-	{
-		if (countMarks == 0 || index < 0 || index >= countMarks)
-		{
-			return 0;
-		}
-
-		return marks[index];
-	}
-
-	void set_marks(int index, int mark)
-	{
-		if (countMarks == 0 || index < 0 || index >= countMarks
-			|| mark < 0 || mark > 10)
-		{
-			return;
-		}
-
-		marks[index] = mark;
-	}
+	string toString();
+	int get_mark(int index);
+	void set_marks(int index, int mark);
 };
