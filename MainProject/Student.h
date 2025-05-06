@@ -7,37 +7,92 @@ using namespace std;
 
 class Student
 {
-public:
-	// fields
+private:
+
 	string name;
 	int age;
-	int count_marks;
+	int countMarks;
 	int* marks;
 	bool alive;
 
+public:
+
+	// methods get and set
+
+	string getName()
+	{
+		return name;
+	}
+
+	void setName(string name)
+	{
+		this->name = name;
+	}
+
+	int getAge()
+	{
+		return age;
+	}
+
+	void setAge(int age)
+	{
+		if (age > 18 || age < 13)
+		{
+			return;
+		}
+
+		this->age = age;
+	}
+
+	int* getMarks()
+	{
+		return marks;
+	}
+
+	void setMarks(int* marks, int countMarks)
+	{
+		if (countMarks <= 0 )
+		{
+			return;
+		}
+
+		this->marks = marks;
+		this->countMarks = countMarks;
+	}
+
+	int getCountMarks()
+	{
+		return countMarks;
+	}
+
+	bool isAlive()
+	{
+		return alive;
+	}
+
+	bool setAlive(bool alive)
+	{
+		this->alive = alive;
+	}
+
 	// constructors
 
-	// constructors with args
 	Student(string name) : Student(name, 13)
 	{
-		cout << "constructor with args" << endl;
 	}
 
-	Student(string name, int age) : Student(name, age, 10, true) // Добавил значение по умолчанию для count_marks
+	Student(string name, int age) : Student(name, age, 10, true)
 	{
-		//cout << "constructor with args" << endl;
 	}
 
-	// canonical-constructor
 	Student(string name, int age, int countMarks, bool alive)
 	{
-		//cout << "canonical-constructor" << endl;
 		this->name = name;
 		this->age = age > 13 ? age : 13;
-		this->count_marks = countMarks; // Исправлено: countMarks вместо count_marks
-		marks = new int[count_marks]; // Теперь count_marks инициализирована
+		this->countMarks = countMarks;
+		marks = new int[countMarks];
 
-		for (int i = 0; i < count_marks; i++)
+		for (int i = 0; i < countMarks; i++)
 		{
 			marks[i] = 4;
 		}
@@ -45,22 +100,20 @@ public:
 		this->alive = alive;
 	}
 
-	// constructor without args
 	Student() : Student("undefined", 13, 10, true)
 	{
 		//cout << "default-constructor" << endl;
 	}
 
-	// copy-constructor
 	Student(const Student& student)
 	{
 		cout << "copy-constructor \n\n";
 		name = student.name;
 		age = student.age;
-		count_marks = student.count_marks;
-		marks = new int[count_marks];
+		countMarks = student.countMarks;
+		marks = new int[countMarks];
 
-		for (int i = 0; i < count_marks; i++)  // Fixed: initialized i and added condition
+		for (int i = 0; i < countMarks; i++)
 		{
 			marks[i] = student.marks[i];
 		}
@@ -70,8 +123,6 @@ public:
 	// destructor
 	~Student()
 	{
-		//cout << "destructor" << endl;
-
 		if (marks != nullptr)
 		{
 			delete[] marks;
@@ -88,33 +139,33 @@ public:
 		s += "Marks: ";
 		s += convert() + "\n";
 		s += "Is a student? ";
-		s += (alive ? "Yes" : "No");
+		s += (alive ? "Yes\n" : "No\n");
 
 		return s;
 	}
 
 	string convert()
 	{
-		if (count_marks == 0)
+		if (countMarks == 0)
 		{
 			return "none";
 		}
 
 		string s = "[ ";
 
-		for (int i = 0; i < count_marks - 1; i++)
+		for (int i = 0; i < countMarks - 1; i++)
 		{
 			s += to_string(marks[i]) + ", ";
 		}
 
-		s += to_string(marks[count_marks - 1]) + " ]";
+		s += to_string(marks[countMarks - 1]) + " ]";
 
 		return s;
 	}
 
 	int get_mark(int index)
 	{
-		if (count_marks == 0 || index < 0 || index >= count_marks)
+		if (countMarks == 0 || index < 0 || index >= countMarks)
 		{
 			return 0;
 		}
@@ -124,7 +175,7 @@ public:
 
 	void set_marks(int index, int mark)
 	{
-		if (count_marks == 0 || index < 0 || index >= count_marks
+		if (countMarks == 0 || index < 0 || index >= countMarks
 			|| mark < 0 || mark > 10)
 		{
 			return;

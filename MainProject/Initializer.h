@@ -1,10 +1,13 @@
 #include "Student.h"
+#include <ctime>
 
 class Initializer
 {
 public:
 	void init(Student*& list, int count)
 	{
+		srand(time(0));
+
 		if (list == nullptr && count > 0)
 		{
 			list = new Student[count];
