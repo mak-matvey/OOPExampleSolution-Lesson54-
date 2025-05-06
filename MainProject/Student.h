@@ -15,6 +15,25 @@ private:
 	int* marks;
 	bool alive;
 
+	string convert()
+	{
+		if (countMarks == 0)
+		{
+			return "none";
+		}
+
+		string s = "[ ";
+
+		for (int i = 0; i < countMarks - 1; i++)
+		{
+			s += to_string(marks[i]) + ", ";
+		}
+
+		s += to_string(marks[countMarks - 1]) + " ]";
+
+		return s;
+	}
+
 public:
 
 	// methods get and set
@@ -73,6 +92,18 @@ public:
 	bool setAlive(bool alive)
 	{
 		this->alive = alive;
+	}
+
+	float getAverageMark()
+	{
+		int sum = 0;
+
+		for (int i = 0; i < countMarks; i++)
+		{
+			sum += marks[i];
+		}
+
+		return sum / countMarks;
 	}
 
 	// constructors
@@ -140,25 +171,6 @@ public:
 		s += convert() + "\n";
 		s += "Is a student? ";
 		s += (alive ? "Yes\n" : "No\n");
-
-		return s;
-	}
-
-	string convert()
-	{
-		if (countMarks == 0)
-		{
-			return "none";
-		}
-
-		string s = "[ ";
-
-		for (int i = 0; i < countMarks - 1; i++)
-		{
-			s += to_string(marks[i]) + ", ";
-		}
-
-		s += to_string(marks[countMarks - 1]) + " ]";
 
 		return s;
 	}

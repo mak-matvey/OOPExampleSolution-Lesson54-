@@ -11,6 +11,8 @@ int main()
 	cout << "Input number of students: ";
 	cin >> count;
 
+	cout << endl;
+
 	initializer.init(list, count);
 
 	for (int i = 0; i < count; i++)
