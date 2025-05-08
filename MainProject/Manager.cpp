@@ -3,7 +3,6 @@
 Student* Manager::findBestStudents(Student* list, int count, int* bestCount)
 {
 	float bestMark = 8.5;
-	int count = 0;
 
 	*bestCount = 0;
 
@@ -11,7 +10,7 @@ Student* Manager::findBestStudents(Student* list, int count, int* bestCount)
 	{
 		if (list[i].getAverageMark() >= bestMark)
 		{
-			bestCount++;
+			(*bestCount)++;
 		}
 	}
 
@@ -25,20 +24,21 @@ Student* Manager::findBestStudents(Student* list, int count, int* bestCount)
 			j++;
 		}
 	}
+
+	return bestList;
 }
 
 Student* Manager::findWorstStudents(Student* list, int count, int* worstCount)
 {
 	float worstMark = 6.0;
-	int count = 0;
-
+	
 	*worstCount = 0;
 
 	for (int i = 0; i < count; i++)
 	{
 		if (list[i].getAverageMark() >= worstMark)
 		{
-			worstCount++;
+			(*worstCount)++;
 		}
 	}
 
@@ -52,4 +52,6 @@ Student* Manager::findWorstStudents(Student* list, int count, int* worstCount)
 			j++;
 		}
 	}
+
+	return worstList;
 }

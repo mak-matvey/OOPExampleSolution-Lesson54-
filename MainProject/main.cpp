@@ -5,6 +5,7 @@ int main()
 	Student a;
 	Student* list = nullptr;
 	Initializer initializer;
+	Manager manager;
 
 	int count;
 
@@ -22,7 +23,10 @@ int main()
 		cout << list[i].toString() << endl;
 	}
 
-	Student* bestList = manager.findBestStudents(list, count, size);
+	int size = 0;
+	Student* bestList = manager.findBestStudents(list, count, &size);
 
 	cout << "List of best students: " << endl;
+
+	return 0;
 }

@@ -15,24 +15,7 @@ private:
 	int* marks;
 	bool alive;
 
-	string convert()
-	{
-		if (countMarks == 0)
-		{
-			return "none";
-		}
-
-		string s = "[ ";
-
-		for (int i = 0; i < countMarks - 1; i++)
-		{
-			s += to_string(marks[i]) + ", ";
-		}
-
-		s += to_string(marks[countMarks - 1]) + " ]";
-
-		return s;
-	}
+	string convert();
 
 public:
 	// constructors
@@ -42,8 +25,11 @@ public:
 	Student(string name, int age) : Student(name, age, 10, true)
 	{
 	}
+	
 	Student(string name, int age, int countMarks, bool alive);
-	Student();
+	
+	Student() : Student("no name", 13, 10, true) {}
+	
 	Student(const Student& student);
 	
 	// destructor
@@ -58,8 +44,8 @@ public:
 	void setMarks(int* marks, int countMarks);
 	int getCountMarks();
 	bool isAlive();
-	bool setAlive(bool alive);
-	float getAverageMark();
+	void setAlive(bool alive);
+	double getAverageMark();
 
 	// methods
 	string toString();
