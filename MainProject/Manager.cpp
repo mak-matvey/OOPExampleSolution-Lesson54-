@@ -5,7 +5,7 @@ Group Manager::findBestStudents(Group group)
 	float bestMark = 8.5;
 	int bestCount = 0;
 
-	for (int i = 0; i < group.getCount; i++)
+	for (int i = 0; i < group.getCount(); i++)
 	{
 		if (group.get(i).getAverageMark() >= bestMark)
 		{
@@ -15,7 +15,7 @@ Group Manager::findBestStudents(Group group)
 
 	Group best(bestCount);
 
-	for (int i = 0, j = 0; i < group.getCount; i++)
+	for (int i = 0, j = 0; i < group.getCount(); i++)
 	{
 		if (group.get(i).getAverageMark() >= bestMark)
 		{
@@ -32,7 +32,7 @@ Group Manager::findWorstStudents(Group group)
 	float worstMark = 6.0;
 	int worstCount = 0;
 
-	for (int i = 0; i < group.getCount; i++)
+	for (int i = 0; i < group.getCount(); i++)
 	{
 		if (group.get(i).getAverageMark() >= worstMark)
 		{
@@ -42,7 +42,7 @@ Group Manager::findWorstStudents(Group group)
 
 	Group worst(worstCount);
 
-	for (int i = 0, j = 0; i < group.getCount; i++)
+	for (int i = 0, j = 0; i < group.getCount(); i++)
 	{
 		if (group.get(i).getAverageMark() >= worstMark)
 		{

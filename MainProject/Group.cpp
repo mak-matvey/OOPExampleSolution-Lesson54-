@@ -34,13 +34,91 @@ Group::~Group()
 	}
 }
 
-Student get(int index);
-void set(int index, Student student);
-int getCount();
-void add(Student student);
-void add(int index, Student student);
-void remove(Student student);
-void remove(int index);
-void clear();
-string toString();
-bool isEmpty();
+Student Group::get(int index)
+{
+	if (count > 0 && index >= 0 && index < count)
+	{
+		return list[index];
+	}
+
+	return Student();
+}
+
+void Group::set(int index, Student student)
+{
+	if (count > 0 && index >= 0 && index < count)
+	{
+		list[index] = student;
+	}
+}
+
+int Group::getCount()
+{
+	return count;
+}
+
+void Group::add(Student student)
+{
+	if (list != nullptr && count < capacity)
+	{
+		list[count] = student;
+		count++;
+	}
+}
+
+void Group::remove(Student student)
+{
+	for (int i = 0; i < count; i++)
+	{
+		if (list[i].getName() == student.getName()
+			&& list[i].getAge() == student.getAge()
+			&& list[i].isAlive() == student.isAlive())
+		{
+			for (int j = i + 1; j < count; j++)
+			{
+				list[j - 1] = list[j];
+			}
+			count--;
+			return;
+		}
+	}
+}
+
+void Group::remove(int index)
+{
+	for (int i = index + 1; i < count; i++)
+	{
+		list[i - 1] = list[i];
+		count--;
+		return;
+	}
+}
+
+void Group::clear()
+{
+	count = 0;
+}
+
+string Group::toString()
+{
+	string s = "";
+
+	if (list != nullptr && count > 0)
+	{
+		for (int i = 0; i < count; i++)
+		{
+			s += list[i].toString() + "\n";
+		}
+	}
+	else
+	{
+		s = "List is empty!\n";
+	}
+
+	return s;
+}
+
+bool Group::isEmpty()
+{
+	return count == 0;
+}
