@@ -8,7 +8,7 @@ Group::Group(int capacity)
 {
 	this->capacity = capacity;
 	list = new Student[capacity];
-	count = 0;
+	count = capacity;
 }
 
 Group::Group(Student* list, int count)
@@ -121,4 +121,9 @@ string Group::toString()
 bool Group::isEmpty()
 {
 	return count == 0;
+}
+
+int Group::getCapacity()
+{
+	return capacity;
 }

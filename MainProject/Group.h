@@ -23,4 +23,5 @@ public:
 	void clear();
 	string toString();
 	bool isEmpty();
+	int getCapacity();
 };
