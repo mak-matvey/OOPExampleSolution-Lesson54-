@@ -28,7 +28,7 @@ public:
 	
 	Student(string name, int age, int countMarks, bool alive);
 	
-	Student() : Student("no name", 13, 10, true) {}
+	Student() : Student("", 0, 0, false) {}
 	
 	Student(const Student& student);
 	

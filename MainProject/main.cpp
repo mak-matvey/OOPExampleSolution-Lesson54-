@@ -26,7 +26,5 @@ int main()
 	int size = 0;
 	Student* bestList = manager.findBestStudents(list, count, &size);
 
-	cout << "List of best students: " << endl;
-
 	return 0;
 }

@@ -1,8 +1,8 @@
-#include "Student.h"
+#include "Group.h"
 #include <ctime>
 
 class Initializer
 {
 public:
-	void init(Student*& list, int count);
+	void init(Group group);
 };
