@@ -13,29 +13,92 @@ ArrayList::~ArrayList()
 
 void ArrayList::add(int element)
 {
-
+	add(element, size - 1);
 }
 
 void ArrayList::add(int element, int index)
 {
+	if (isEmpty())
+	{
+		size = 1;
+		list = new int[size];
+		list[0] = element;
+	}
 
+	else if (isEmpty() || index < 0
+		|| index >= size)
+	{
+		return;
+	}
+
+	else
+	{
+		size++;
+		int* tempList = new int[size];
+
+		for (int i = 0, j = 0; j < size; j++)
+		{
+			if (i != index)
+			{
+				tempList[j] = list[i];
+				i++;
+			}
+			else
+			{
+				tempList[j] = element;
+			}
+		}
+
+		delete[] list;
+
+		list = tempList;
+		delete[] tempList;
+	}
 }
 
 void ArrayList::addAll(int* elements, int size)
 {
-
+	for (int i = 0; i < size; i++)
+	{
+		add(elements[i]);
+	}
 }
 
-// add later: void ArrayList::addAll(int index, int* elements, int size)
+// need fix 68 line
+void ArrayList::addAll(int index, int* elements, int size)
+{
+	for (int i = index; i < size; i++)
+	{
+		add(elements[i]);
+	}
+}
 
 void ArrayList::remove()
 {
-
+	remove(size - 1);
 }
 
 void ArrayList::remove(int index)
 {
+	if (!isEmpty())
+	{
+		size--;
+		int* tempList = new int[size];
 
+		for (int i = 0, j = 0; i < size; i++)
+		{
+			if (i != index)
+			{
+				tempList[j] = list[i];
+				j++;
+			}
+		}
+
+		delete[] list;
+		list = tempList;
+
+		delete[] tempList;
+	}
 }
 
 void ArrayList::clear()
