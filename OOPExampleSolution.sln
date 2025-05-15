@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MainProject", "MainProject\MainProject.vcxproj", "{7B65B5BD-2B6A-4E5F-9639-FECD1C44EF2C}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ADSProject", "ADSProject\ADSProject.vcxproj", "{8080E2CF-CEF6-406F-9FF8-501BA9DF826B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{7B65B5BD-2B6A-4E5F-9639-FECD1C44EF2C}.Release|x64.Build.0 = Release|x64
 		{7B65B5BD-2B6A-4E5F-9639-FECD1C44EF2C}.Release|x86.ActiveCfg = Release|Win32
 		{7B65B5BD-2B6A-4E5F-9639-FECD1C44EF2C}.Release|x86.Build.0 = Release|Win32
+		{8080E2CF-CEF6-406F-9FF8-501BA9DF826B}.Debug|x64.ActiveCfg = Debug|x64
+		{8080E2CF-CEF6-406F-9FF8-501BA9DF826B}.Debug|x64.Build.0 = Debug|x64
+		{8080E2CF-CEF6-406F-9FF8-501BA9DF826B}.Debug|x86.ActiveCfg = Debug|Win32
+		{8080E2CF-CEF6-406F-9FF8-501BA9DF826B}.Debug|x86.Build.0 = Debug|Win32
+		{8080E2CF-CEF6-406F-9FF8-501BA9DF826B}.Release|x64.ActiveCfg = Release|x64
+		{8080E2CF-CEF6-406F-9FF8-501BA9DF826B}.Release|x64.Build.0 = Release|x64
+		{8080E2CF-CEF6-406F-9FF8-501BA9DF826B}.Release|x86.ActiveCfg = Release|Win32
+		{8080E2CF-CEF6-406F-9FF8-501BA9DF826B}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -66,6 +66,15 @@ void Group::add(Student student)
 	}
 }
 
+void Group::add(int index, Student student)
+{
+	if (list != nullptr && count < capacity)
+	{
+		list[index] = student;
+		count++;
+	}
+}
+
 void Group::remove(Student student)
 {
 	for (int i = 0; i < count; i++)
