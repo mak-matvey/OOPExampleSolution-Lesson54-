@@ -65,13 +65,18 @@ void ArrayList::addAll(int* elements, int size)
 }
 
 // need fix 68 line
-void ArrayList::addAll(int index, int* elements, int size)
-{
-	for (int i = index; i < size; i++)
-	{
-		add(elements[i]);
-	}
-}
+//void ArrayList::addAll(int* elements, int size, int index)
+//{
+//	if (index < 0 || index > this->size)
+//	{
+//		return;
+//	}
+//
+//	for (int i = index; i < size; i++)
+//	{
+//		add(elements[i]);
+//	}
+//}
 
 void ArrayList::remove()
 {
