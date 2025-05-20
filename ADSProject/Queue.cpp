@@ -90,6 +90,7 @@ int Queue::getSize()
 	return size;
 }
 
+
 string Queue::toString()
 {
 	string s = "Queue is empty";
