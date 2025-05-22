@@ -1,165 +1,142 @@
 #include "ArrayList.h"
 
-ArrayList::ArrayList()
-{
+ArrayList::ArrayList() {
 	list = nullptr;
 	size = 0;
 }
 
-ArrayList::~ArrayList()
-{
+ArrayList::~ArrayList() {
 	clear();
 }
 
-void ArrayList::add(int element)
-{
-	add(element, size - 1);
-}
-
-void ArrayList::add(int element, int index)
-{
-	if (isEmpty())
-	{
+// O(N)
+void ArrayList::add(int element) {
+	if (isEmpty()) {
 		size = 1;
 		list = new int[size];
 		list[0] = element;
 	}
+	else {
+		int* temp = new int[size + 1];
+		for (int i = 0; i < size; i++)
+		{
+			temp[i] = list[i];
+		}
 
-	else if (isEmpty() || index < 0
-		|| index >= size)
-	{
+		temp[size] = element;
+		delete[] list;
+		list = temp;
+		size++;
+	}
+}
+
+// O(N)
+void ArrayList::add(int index, int element) {
+	if (isEmpty()) {
+		size = 1;
+		list = new int[size];
+		list[0] = element;
+	}
+	else if (index < 0 || index >= size) {
 		return;
 	}
-
-	else
-	{
+	else {
 		size++;
-		int* tempList = new int[size];
+		int* temp = new int[size];
 
 		for (int i = 0, j = 0; j < size; j++)
 		{
-			if (i != index)
-			{
-				tempList[j] = list[i];
+			if (i != index) {
+				temp[j] = list[i];
 				i++;
 			}
-			else
-			{
-				tempList[j] = element;
+			else {
+				temp[j] = element;
 			}
 		}
 
 		delete[] list;
-
-		list = tempList;
-		delete[] tempList;
+		list = temp;
+		size++;
 	}
 }
 
-void ArrayList::addAll(int* elements, int size)
-{
+
+void ArrayList::addAll(int* elements, int size) {
 	for (int i = 0; i < size; i++)
 	{
 		add(elements[i]);
 	}
 }
 
-// need fix 68 line
-//void ArrayList::addAll(int* elements, int size, int index)
-//{
-//	if (index < 0 || index > this->size)
-//	{
-//		return;
-//	}
-//
-//	for (int i = index; i < size; i++)
-//	{
-//		add(elements[i]);
-//	}
-//}
+//void ArrayList::addAll(int index, int* elements, int size){}
 
-void ArrayList::remove()
-{
+void ArrayList::revome() {
 	remove(size - 1);
 }
 
-void ArrayList::remove(int index)
-{
-	if (!isEmpty())
-	{
+// O(N)
+void ArrayList::remove(int index) {
+	if (!isEmpty()) {
 		size--;
-		int* tempList = new int[size];
+		int* temp = new int[size];
 
 		for (int i = 0, j = 0; i < size; i++)
 		{
-			if (i != index)
-			{
-				tempList[j] = list[i];
+			if (i != index) {
+				temp[j] = list[i];
 				j++;
 			}
 		}
 
 		delete[] list;
-		list = tempList;
-
-		delete[] tempList;
+		list = temp;
 	}
 }
 
-void ArrayList::clear()
-{
-	if (list != nullptr)
-	{
+void ArrayList::clear() {
+	if (list != nullptr) {
 		delete[] list;
 		size = 0;
 	}
 }
 
-bool ArrayList::isEmpty()
-{
-	return size > 0;
+bool ArrayList::isEmpty() {
+	return size == 0;
 }
 
-int ArrayList::get(int index)
-{
-	if (!isEmpty() || index < 0 || index > size)
-	{
-		return 0;
+
+// O(1)
+int ArrayList::get(int index) {
+	if (!isEmpty() && index >= 0 && index < size) {
+		return list[index];
 	}
 
-	return list[index];
+	return 0;
 }
 
-void ArrayList::set(int element, int index)
-{
-	if (!isEmpty() || index < 0 || index > size)
-	{
-		return;
+// O(1)
+void ArrayList::set(int index, int element) {
+	if (!isEmpty() && index >= 0 && index < size) {
+		list[index] = element;
 	}
-
-	list[index] = element;
 }
 
-int ArrayList::getSize()
-{
+int ArrayList::getSize() {
 	return size;
 }
 
-string ArrayList::toString()
-{
-	string s = "List is empty";
+string ArrayList::toString() {
+	string s = "List is empty.";
 
-	if (!isEmpty())
-	{
-		s = "[ ";
+	if (!isEmpty()) {
+		s = "";
+
+		for (int i = 0; i < size; i++)
+		{
+			s += to_string(list[i]) + " ";
+		}
 	}
-
-	for (int i = 0; i < size - 1; i++)
-	{
-		s += to_string(list[i]) + ", ";
-	}
-
-	s += list[size] + " ]";
 
 	return s;
 }

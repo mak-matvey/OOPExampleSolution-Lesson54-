@@ -1,5 +1,4 @@
 #pragma once
-
 #include <iostream>
 #include <string>
 
@@ -11,8 +10,6 @@ private:
 
 	string name;
 	int age;
-	int countMarks;
-	int* marks;
 	bool alive;
 
 	string convert();
@@ -22,13 +19,13 @@ public:
 	Student(string name) : Student(name, 13)
 	{
 	}
-	Student(string name, int age) : Student(name, age, 10, true)
+	Student(string name, int age) : Student(name, age, true)
 	{
 	}
 	
-	Student(string name, int age, int countMarks, bool alive);
+	Student(string name, int age, bool alive);
 	
-	Student() : Student("", 0, 0, false) {}
+	Student() : Student("", 0, false) {}
 	
 	Student(const Student& student);
 	
@@ -40,15 +37,9 @@ public:
 	void setName(string name);
 	int getAge();
 	void setAge(int age);
-	int* getMarks();
-	void setMarks(int* marks, int countMarks);
-	int getCountMarks();
 	bool isAlive();
 	void setAlive(bool alive);
-	double getAverageMark();
 
 	// methods
 	string toString();
-	int get_mark(int index);
-	void set_marks(int index, int mark);
 };

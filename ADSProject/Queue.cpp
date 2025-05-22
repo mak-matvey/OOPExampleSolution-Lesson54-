@@ -1,30 +1,22 @@
 #include "Queue.h"
 
-Queue::Queue()
-{
+Queue::Queue() {
 	queue = nullptr;
 	size = 0;
 }
 
-Queue::~Queue()
-{
+Queue::~Queue() {
 	clear();
 }
 
-
-void Queue::enqueue(int element)
-{
-	if (isEmpty())
-	{
+void Queue::enqueue(int element) {
+	if (isEmpty()) {
 		size = 1;
 		queue = new int[size];
 		queue[0] = element;
 	}
-
-	else
-	{
+	else {
 		int* temp = new int[size + 1];
-
 		for (int i = 0; i < size; i++)
 		{
 			temp[i] = queue[i];
@@ -32,16 +24,13 @@ void Queue::enqueue(int element)
 
 		temp[size] = element;
 		size++;
-		
 		delete[] queue;
 		queue = temp;
 	}
 }
 
-int Queue::dequeue()
-{
-	if (isEmpty())
-	{
+int Queue::dequeue() {
+	if (isEmpty()) {
 		return 0;
 	}
 
@@ -61,50 +50,38 @@ int Queue::dequeue()
 	return element;
 }
 
-int Queue::peek()
-{
-	if (!isEmpty())
-	{
+void Queue::clear() {
+	if (queue != nullptr) {
+		delete[] queue;
+		size = 0;
+	}
+}
+
+int Queue::peek() {
+	if (!isEmpty()) {
 		return queue[0];
 	}
 
 	return 0;
 }
 
-void Queue::clear()
-{
-	if (queue != nullptr)
-	{
-		delete[] queue;
-		size = 0;
-	}
-}
-
-bool Queue::isEmpty()
-{
+bool Queue::isEmpty() {
 	return size == 0;
 }
 
-int Queue::getSize()
-{
+int Queue::getSize() {
 	return size;
 }
 
+string Queue::toString() {
+	string s = "Queue is empty.";
 
-string Queue::toString()
-{
-	string s = "Queue is empty";
-
-	if (!isEmpty())
-	{
-		s = "[";
-
-		for (int i = 0; i < size - 1; i++)
+	if (!isEmpty()) {
+		s = "";
+		for (int i = 0; i < size; i++)
 		{
 			s += to_string(queue[i]) + " ";
 		}
-
-		s += "]";
 	}
 
 	return s;
