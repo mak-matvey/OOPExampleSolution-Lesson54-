@@ -1,45 +1,40 @@
-#pragma once
 #include <iostream>
 #include <string>
-
 using namespace std;
 
-class Student
-{
+// Entity-class
+class Student {
 private:
-
+	// fields
 	string name;
 	int age;
+	int* marks;
+	int countMarks;
 	bool alive;
 
 	string convert();
 
 public:
-	// constructors
-	Student(string name) : Student(name, 13)
-	{
-	}
-	Student(string name, int age) : Student(name, age, true)
-	{
-	}
-	
-	Student(string name, int age, bool alive);
-	
-	Student() : Student("", 0, false) {}
-	
+	Student() : Student("", 0, 0, false) { }
+	Student(string name) : Student(name, 13) { }
+	Student(string name, int age) : Student(name, age, 0, true) { }
+	Student(string name, int age, int countMark, bool alive);
 	Student(const Student& student);
-	
-	// destructor
 	~Student();
 
-	// methods get and set
 	string getName();
 	void setName(string name);
 	int getAge();
 	void setAge(int age);
+	int* getMarks();
+	void setMarks(int* marks, int count);
+	int getCountMarks();
 	bool isAlive();
 	void setAlive(bool alive);
+	int getMark(int index);
+	void setMark(int index, int mark);
 
-	// methods
+	double getAverageMark();
+
 	string toString();
 };

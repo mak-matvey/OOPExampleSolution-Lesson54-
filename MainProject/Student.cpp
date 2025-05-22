@@ -1,93 +1,133 @@
 #include "Student.h"
 
-using namespace std;
+string Student::convert() {
+	string s = "[";
 
+	if (this->countMarks > 0) {
+		for (int i = 0; i < this->countMarks - 1; i++)
+		{
+			s += to_string(this->marks[i]) + ", ";
+		}
 
-Student::Student(string name, int age, bool alive)
-{
-	this->name = name;
-	this->age = age > 13 ? age : 13;
-	this->alive = alive;
-}
-
-Student::Student(const Student& student)
-{
-	cout << "copy-constructor \n\n";
-	name = student.name;
-	age = student.age;
-	alive = student.alive;
-}
-
-// destructor
-Student::~Student()
-{
-}
-
-string Student::convert()
-{
-	if (countMarks == 0)
-	{
-		return "none";
+		s += to_string(this->marks[this->countMarks - 1]);
 	}
 
-	string s = "[ ";
-
-	for (int i = 0; i < countMarks - 1; i++)
-	{
-		s += to_string(marks[i]) + ", ";
-	}
-
-	s += to_string(marks[countMarks - 1]) + " ]";
+	s += "]";
 
 	return s;
 }
 
-string Student::getName()
-{
+string Student::getName() {
 	return name;
 }
 
-void Student::setName(string name)
-{
+void Student::setName(string name) {
 	this->name = name;
 }
 
-int Student::getAge()
-{
+int Student::getAge() {
 	return age;
 }
 
-void Student::setAge(int age)
-{
-	if (age > 18 || age < 13)
-	{
-		return;
+void Student::setAge(int age) {
+	if (age >= 13 && age <= 18) {
+		this->age = age;
 	}
-
-	this->age = age;
 }
 
-bool Student::isAlive()
-{
+int* Student::getMarks() {
+	return marks;
+}
+
+void Student::setMarks(int* marks, int count) {
+	this->marks = marks;
+	countMarks = count;
+}
+
+int Student::getCountMarks() {
+	return countMarks;
+}
+
+bool Student::isAlive() {
 	return alive;
 }
 
-void Student::setAlive(bool alive)
-{
+void Student::setAlive(bool alive) {
 	this->alive = alive;
 }
 
-// methods
-string Student::toString()
+double Student::getAverageMark() {
+	double sum = 0;
+
+	for (int i = 0; i < countMarks; i++)
+	{
+		sum += marks[i];
+	}
+
+	return sum / countMarks;
+}
+
+// canonical-constructor
+Student::Student(string name, int age, int countMark, bool alive) {
+	//cout << "canonical-constructor ..." << endl;
+	this->name = name;
+	this->age = age;
+	this->countMarks = countMark;
+	marks = new int[countMark];
+
+	for (int i = 0; i < countMark; i++)
+	{
+		marks[i] = 4;
+	}
+
+	this->alive = alive;
+}
+
+// copy-constructor
+Student::Student(const Student& student) : Student(student.name,
+	student.age, student.countMarks, student.alive)
 {
-	string s = "Name: ";
+	//cout << "copy-constructor ..." << endl;
 
-	s += name + "\n";
-	s += "Age: " + to_string(age) + "\n";
-	s += "Marks: ";
-	s += convert() + "\n";
-	s += "Is a student? ";
-	s += (alive ? "Yes\n" : "No\n");
+	for (int i = 0; i < countMarks; i++)
+	{
+		marks[i] = student.marks[i];
+	}
+}
 
+// destructor
+Student::~Student() {
+	//cout << "destructor..." << endl;
+
+	if (countMarks > 0) {
+		delete[] this->marks;
+	}
+}
+
+// methods
+string Student::toString() {
+	string s = "Name: " + this->name;
+	s += ", age: " + to_string(this->age);
+	s += ", marks " + this->convert();
+	s += ", alive: ";
+	s += this->alive ? "yes" : "no";
 	return s;
+}
+
+int Student::getMark(int index) {
+	if (countMarks == 0 || index < 0
+		|| index >= countMarks) {
+		return -1;
+	}
+
+	return marks[index];
+}
+
+void Student::setMark(int index, int mark) {
+	if (countMarks == 0 || index < 0 || index >= countMarks
+		|| mark < 0 || mark > 10) {
+		return;
+	}
+
+	marks[index] = mark;
 }
