@@ -8,8 +8,6 @@ private:
 	// fields
 	string name;
 	int age;
-	int* marks;
-	int countMarks;
 	bool alive;
 
 	string convert();
@@ -26,15 +24,8 @@ public:
 	void setName(string name);
 	int getAge();
 	void setAge(int age);
-	int* getMarks();
-	void setMarks(int* marks, int count);
-	int getCountMarks();
 	bool isAlive();
 	void setAlive(bool alive);
-	int getMark(int index);
-	void setMark(int index, int mark);
-
-	double getAverageMark();
 
 	string toString();
 };
