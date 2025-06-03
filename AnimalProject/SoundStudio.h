@@ -4,8 +4,11 @@
 class SoundStudio
 {
 public:
-	void makeItSound(Animal* animal)
+	void makeItSound(Animal** animals, int size)
 	{
-		animal->getVoice();
+		for (int i = 0; i < size; i++)
+		{
+			animals[i]->getVoice();
+		}
 	}
 };
