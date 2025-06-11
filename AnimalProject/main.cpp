@@ -5,14 +5,17 @@
 
 int main()
 {
-	SoundStudio studio;
+	Animal a1, a2, a3;
 
-	Dog* dog = new Dog("Laika");
-	Cat* cat = new Cat("Adel");
-	Crocodile* crocodile = new Crocodile("Pushok");
+	cout << "Number of animals: " << a3.count << endl;
+	cout << "Number of animals: " << Animal::count << endl;
 
-	int size = 5;
-	Animal** animals = new Animal*[size] {dog, cat, crocodile, dog, cat}
+	{
+		Animal a4, a5;
+		cout << "Number of animals: " << Animal::count << endl;
+	}
 
-	studio.makeItSound(animals, size);
+	cout << "Number of animals: " << Animal::count << endl;
+
+	return 0;
 }
